@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -32,4 +31,10 @@ public class CitasModels {
     @Column(nullable = false, name = "nombre_paciente")
     private String nombrePaciente;
 
+    public CitasModels(ConsultoriosModels consultorio, DoctoresModels doctor, LocalDateTime horarioConsulta, String nombrePaciente) {
+        this.consultorio = consultorio;
+        this.doctor = doctor;
+        this.horarioConsulta = horarioConsulta;
+        this.nombrePaciente = nombrePaciente;
+    }
 }
