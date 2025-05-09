@@ -60,7 +60,7 @@ public class CitasServices {
         if (fecha != null) {
             LocalDateTime inicioDia = LocalDateTime.parse(fecha + "T00:00:00");
             LocalDateTime finDia = inicioDia.plusDays(1);
-            return citaRepositorio.findByHorarioConsultaBetween(inicioDia, finDia);
+            return citaRepositorio.findByHorarioConsultaBetween(doctor.getIdDoctores(), inicioDia, finDia);
         } else if (consultorioId != null) {
             ConsultoriosModels consultorio = consultorioRepositorio.findById(consultorioId).orElse(null);
             if(consultorio != null) {
@@ -70,7 +70,7 @@ public class CitasServices {
                 return List.of();
             }
         } else if (doctorId != null) {
-            DoctoresServices doctor = doctorRepositorio.findById(doctorId).orElse(null);
+            DoctoresModels doctor = doctorRepositorio.findById(doctorId).orElse(null);
             if(doctor != null) {
                 return citaRepositorio.findByDoctorAndHorarioConsultaBetween(doctor, LocalDateTime.now().toLocalDate().atStartOfDay(), LocalDateTime.now().toLocalDate().plusDays(1).atStartOfDay());
             }
@@ -111,7 +111,7 @@ public class CitasServices {
                 }
             }
 
-            List<CitasModels> citasDoctorHoy = citaRepositorio.findByHorarioConsultaBetween(doctor.getId(), horarioConsulta.toLocalDate().atStartOfDay(), horarioConsulta.toLocalDate().plusDays(1).atStartOfDay());
+            List<CitasModels> citasDoctorHoy = citaRepositorio.findByHorarioConsultaBetween(doctor.getIdDoctores(), horarioConsulta.toLocalDate().atStartOfDay(), horarioConsulta.toLocalDate().plusDays(1).atStartOfDay());
             int citasDelDoctorSinEditar = citasDoctorHoy.size();
             if(cita.getDoctor().getCitas() == doctor.getCitas()){
                 citasDelDoctorSinEditar = citasDoctorHoy.size() -1;
