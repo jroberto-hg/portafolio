@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información Médica</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 8px;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        .doctor-info {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Información Médica</h1>
+
+    <h2>Doctores</h2>
+    <ul id="lista-doctores">
+        </ul>
+
+    <h2>Consultorios</h2>
+    <ul id="lista-consultorios">
+        </ul>
+
+    <h2>Citas Agendadas</h2>
+    <ul id="lista-citas">
+        </ul>
+
+    <script>
+        // Simulación de datos obtenidos desde un backend Java
+        const doctores = [
+            { nombre: "Ana", apellidoPaterno: "Pérez", apellidoMaterno: "Gómez", especialidad: "Cardiología" },
+            { nombre: "Juan", apellidoPaterno: "López", apellidoMaterno: "Rodríguez", especialidad: "Medicina General" },
+            { nombre: "Carlos", apellidoPaterno: "Gómez", apellidoMaterno: "Ruiz", especialidad: "Pediatría" },
+            { nombre: "Elena", apellidoPaterno: "Vargas", apellidoMaterno: "Soto", especialidad: "Dermatología" }
+        ];
+
+        const consultorios = [
+            { numero: 1, piso: 1 },
+            { numero: 2, piso: 1 },
+            { numero: 3, piso: 2 },
+            { numero: 4, piso: 2 }
+        ];
+
+        const citas = [
+            { consultorio: 1, doctor: "Dra. Ana Pérez", horario: "2025-05-10 09:00", paciente: "Laura Vargas" },
+            { consultorio: 2, doctor: "Dr. Juan López", horario: "2025-05-10 10:30", paciente: "Pedro Gómez" },
+            { consultorio: 1, doctor: "Dr. Carlos Gómez", horario: "2025-05-10 11:00", paciente: "Sofía Martínez" },
+            { consultorio: 3, doctor: "Dra. Elena Vargas", horario: "2025-05-10 14:00", paciente: "Javier Ruiz" }
+        ];
+
+        const listaDoctoresElement = document.getElementById('lista-doctores');
+        const listaConsultoriosElement = document.getElementById('lista-consultorios');
+        const listaCitasElement = document.getElementById('lista-citas');
+
+        // Mostrar doctores
+        doctores.forEach(doctor => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `<span class="doctor-info">${doctor.nombre} ${doctor.apellidoPaterno} ${doctor.apellidoMaterno}</span> - Especialidad: ${doctor.especialidad}`;
+            listaDoctoresElement.appendChild(listItem);
+        });
+
+        // Mostrar consultorios
+        consultorios.forEach(consultorio => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Consultorio #${consultorio.numero}, Piso: ${consultorio.piso}`;
+            listaConsultoriosElement.appendChild(listItem);
+        });
+
+        // Mostrar citas
+        citas.forEach(cita => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Consultorio: ${cita.consultorio}, Doctor: ${cita.doctor}, Horario: ${cita.horario}, Paciente: ${cita.paciente}`;
+            listaCitasElement.appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
