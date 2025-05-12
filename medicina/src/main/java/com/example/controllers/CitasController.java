@@ -2,7 +2,7 @@ package com.example.controllers;
 
 import com.example.models.CitasModels;
 import com.example.services.CitasServices;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,14 +11,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
+@AllArgsConstructor
 @RequestMapping("/citas")
 public class CitasController {
     private final CitasServices citaServicio;
-
-    @Autowired
-    public CitasController(CitasServices citaServicio) {
-        this.citaServicio = citaServicio;
-    }
 
     @PostMapping
     public ResponseEntity<CitasModels> agendarCita(
