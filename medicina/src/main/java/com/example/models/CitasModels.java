@@ -18,11 +18,11 @@ public class CitasModels {
     private Long idCitas;
 
     @ManyToOne
-    @JoinColumn(name = "consultorio_id", nullable = false)
+    @JoinColumn(nullable = false, name = "consultorio")
     private ConsultoriosModels consultorio;
 
     @ManyToOne
-    @JoinColumn(name = "doctor_id", nullable = false)
+    @JoinColumn(nullable = false, name = "doctor")
     private DoctoresModels doctor;
 
     @Column(nullable = false, name = "horario_consulta")

@@ -33,5 +33,4 @@ public class DoctoresModels {
     @OneToMany(mappedBy = "doctor")
     private List<CitasModels> citas;
 
-
 }
