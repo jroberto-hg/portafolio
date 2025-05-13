@@ -1,0 +1,28 @@
+server:
+  servlet:
+    context-path: /api.prueba
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/examen_bd
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: 1800000
+      connection-timeout: 1000
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      format_sql: true
+
+app:
+  allowedOrigins: "*"
+  allowedMethods: GET
+  allowedHeaders: Access-Control-Allow-Origin, Access-Control-Allow-Headers, Access-Control-Allow-Methods, Accept, Authorization, Content-Type, Method, Origin, X-Forwarded-For, X-Real-IP, X-XSS-Protection, X-Content-Security-Policy, X-WebKit-CSP
+  exposedHeaders: X-Get-Header
