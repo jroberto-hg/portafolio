@@ -20,13 +20,13 @@ public interface CitasRepositories extends JpaRepository<CitasModels, Long> {
     List<CitasModels> findByHorarioConsultaBetween(LocalDateTime inicioDia, LocalDateTime finDia);
 
     @Query(
-            value = "SELECT c FROM citas c WHERE c.doctor = ?1 AND c.horarioConsulta BETWEEN ?2 AND ?3",
+            value = "SELECT c.id, c.horario_consulta, c.nombre_paciente, c.consultorio, c.doctor FROM citas c WHERE c.doctor = ?1 AND c.horarioConsulta BETWEEN ?2 AND ?3",
             nativeQuery = true
     )
     List<CitasModels> findByDoctorAndHorarioConsultaBetween(DoctoresModels doctor, LocalDateTime inicioDia, LocalDateTime finDia);
 
     @Query(
-            value = "SELECT c FROM citas c WHERE c.consultorio = ?1 AND c.horarioConsulta BETWEEN ?2 AND ?3",
+            value = "SELECT c.id, c.horario_consulta, c.nombre_paciente, c.consultorio, c.doctor FROM citas c WHERE c.consultorio = ?1 AND c.horarioConsulta BETWEEN ?2 AND ?3",
             nativeQuery = true
     )
     List<CitasModels> findByConsultorioAndHorarioConsultaBetween(ConsultoriosModels consultorio, LocalDateTime inicioDia, LocalDateTime finDia);
